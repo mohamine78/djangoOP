@@ -19,13 +19,6 @@ def contact(request):
 
 def list(request):
     titles = Listing.objects.all()
-    return HttpResponse(f"""
-                        <h1>Hello Django !</h1>
-                        <p>Mes groupes préférés sont :</p>
-                        <ul>
-                        <li>{titles[0].title}</li>
-                         <li>{titles[1].title}</li>
-                          <li>{titles[2].title}</li>
-                          <li>{titles[3].title}</li>
-                        </ul>
-                        """)
+    return render(request, 'listings\listings.html',
+                  context={"titles":titles})
+
