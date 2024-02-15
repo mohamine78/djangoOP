@@ -11,14 +11,15 @@ def hello(request):
     return render(request, 'listings\hello.html',
                   context={"bands":bands})
 
+
+def article(request):
+    titles = Listing.objects.all()
+    return render(request, 'listings\listings.html',
+                  context={"titles":titles})
+
 def about(request):
     return HttpResponse('<h1>About us</h1><p>Nous adorons Django</p>')
 
 def contact(request):
     return HttpResponse('<h1>Contactez Nous!<h1><p>Pour plus de détails, veuillez nous contacter!</p>')
-
-def list(request):
-    titles = Listing.objects.all()
-    return render(request, 'listings\listings.html',
-                  context={"titles":titles})
 
